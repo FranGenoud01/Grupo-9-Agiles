@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
 import { createBdd } from "playwright-bdd";
 
-const { Given, Then } = createBdd();
+const { Given, When, Then } = createBdd();
 
 Given("una partida con la palabra {string}", async ({ page }, palabra: string) => {
   // Entra a la página inyectando la palabra secreta por la URL (el "seam" de test)
@@ -16,4 +16,11 @@ Then("se ve la palabra {string}", async ({ page }, esperada: string) => {
 Then("se ven {int} vidas", async ({ page }, vidas: number) => {
   // Busca en la pantalla un elemento con data-testid="lives" y verifica el número
   await expect(page.getByTestId("lives")).toHaveText(String(vidas));
+});
+
+When("el jugador adivina la letra {string}", async ({ page }, letra: string) => {
+  // Playwright busca un input (textbox), tipea la letra y presiona Enter
+  const input = page.getByRole("textbox");
+  await input.fill(letra);
+  await input.press("Enter");
 });
