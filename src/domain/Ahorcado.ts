@@ -5,6 +5,9 @@ export class Ahorcado {
   constructor(private palabraSecreta: string) {}
 
   adivinar(letra: string): void {
+    if (this.letrasAdivinadas.includes(letra)) {
+      return; 
+    }
     this.letrasAdivinadas.push(letra);
     if (!this.palabraSecreta.includes(letra)) {
       this.vidas--;
