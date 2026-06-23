@@ -1,10 +1,18 @@
 export class Ahorcado {
   private vidas: number = 6;
+  private letrasAdivinadas: string[] = [];
 
   constructor(private palabraSecreta: string) {}
 
+  adivinar(letra: string): void {
+    this.letrasAdivinadas.push(letra);
+  }
+
   palabraEnmascarada(): string {
-    return this.palabraSecreta.replace(/./g, "_ ").trim();
+    return this.palabraSecreta
+      .split("")
+      .map(letra => this.letrasAdivinadas.includes(letra) ? letra : "_")
+      .join(" ");
   }
 
   vidasRestantes(): number {
