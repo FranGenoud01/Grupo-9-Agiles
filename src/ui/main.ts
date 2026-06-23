@@ -25,8 +25,8 @@ function render(container: HTMLElement) {
     <div style="margin-top: 10px;">
       <input type="text" id="letra-input" maxlength="1" autofocus placeholder="Ingresá una letra">
     </div>
-    <div style="margin-top: 20px; font-weight: bold; color: ${juego.estado() === 'GANASTE' ? 'green' : 'red'};" data-testid="mensaje">
-      ${juego.estado() !== "JUGANDO" ? juego.estado() : ""}
+    <div style="margin-top: 20px; font-weight: bold; color: ${juego.estado() === 'GANASTE' ? 'green' : juego.estado() === 'PERDISTE' ? 'red' : 'orange'};" data-testid="mensaje">
+      ${juego.estado() !== "JUGANDO" ? juego.estado() : juego.advertencia()}
     </div>
   `;
 
