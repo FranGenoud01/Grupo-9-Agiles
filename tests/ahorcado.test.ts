@@ -56,4 +56,10 @@ describe("Ahorcado - Iniciar Partida", () => {
     expect(juego.vidasRestantes()).toBe(6);
     expect(juego.advertencia()).toBe("Solo se permiten letras");
   });
+  it("ignora los intentos de adivinar si el juego ya termino", () => {
+    const juego = new Ahorcado("GATO");
+    ["Z", "X", "C", "V", "B", "N"].forEach(letra => juego.adivinar(letra));
+    juego.adivinar("A");
+    expect(juego.vidasRestantes()).toBe(0);
+  });
 });
