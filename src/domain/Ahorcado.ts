@@ -1,17 +1,27 @@
 export class Ahorcado {
   private vidas: number = 6;
   private letrasAdivinadas: string[] = [];
+  private mensajeAdvertencia: string = ""; // 1. Nueva propiedad para guardar el aviso
 
   constructor(private palabraSecreta: string) {}
 
   adivinar(letra: string): void {
     if (this.letrasAdivinadas.includes(letra)) {
+      this.mensajeAdvertencia = "Ya intentaste con esa letra";
       return; 
     }
+
+    this.mensajeAdvertencia = "";
+    
     this.letrasAdivinadas.push(letra);
+    
     if (!this.palabraSecreta.includes(letra)) {
       this.vidas--;
     }
+  }
+
+  advertencia(): string {
+    return this.mensajeAdvertencia;
   }
 
   vidasRestantes(): number {
