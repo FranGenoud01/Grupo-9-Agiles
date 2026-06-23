@@ -10,11 +10,12 @@ export class Ahorcado {
       this.mensajeAdvertencia = "Ya intentaste con esa letra";
       return; 
     }
-
+    if (!/^[a-zA-Z]$/.test(letra)) {
+      this.mensajeAdvertencia = "Solo se permiten letras";
+      return;
+    }
     this.mensajeAdvertencia = "";
-    
     this.letrasAdivinadas.push(letra);
-    
     if (!this.palabraSecreta.includes(letra)) {
       this.vidas--;
     }
