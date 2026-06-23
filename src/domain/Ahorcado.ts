@@ -21,4 +21,11 @@ export class Ahorcado {
   vidasRestantes(): number {
     return this.vidas;
   }
+
+  estado(): string {
+    if (!this.palabraEnmascarada().includes("_")) {
+      return "GANASTE";
+    }
+    return "JUGANDO";
+  }
 }
