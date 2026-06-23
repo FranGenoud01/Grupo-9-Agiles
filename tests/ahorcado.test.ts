@@ -38,4 +38,10 @@ describe("Ahorcado - Iniciar Partida", () => {
     ["Z", "X", "C", "V", "B", "N"].forEach(letra => juego.adivinar(letra));
     expect(juego.estado()).toBe("PERDISTE");
   });
+  it("no descuenta vida si se repite una letra incorrecta ya intentada", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    juego.adivinar("E");
+    expect(juego.vidasRestantes()).toBe(5);
+  });
 });
