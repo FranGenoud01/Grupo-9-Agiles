@@ -25,14 +25,22 @@ function render(container: HTMLElement) {
     <div style="margin-top: 10px;">
       <input type="text" id="letra-input" maxlength="1" autofocus placeholder="Ingresá una letra">
     </div>
+    <div style="margin-top: 20px; font-weight: bold; color: green;" data-testid="mensaje">
+      ${juego.estado() === "GANASTE" ? "GANASTE" : ""}
+    </div>
   `;
 
-  // Capturamos el evento del Enter
   const input = document.getElementById("letra-input") as HTMLInputElement;
+  
+  // Pequeña mejora: deshabilitar el input si el juego terminó
+  if (juego.estado() !== "JUGANDO") {
+    input.disabled = true;
+  }
+
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter" && input.value) {
-      juego.adivinar(input.value.toUpperCase()); // Normalizamos a mayúscula
-      render(container); // Re-renderizamos la pantalla con el nuevo estado
+      juego.adivinar(input.value.toUpperCase());
+      render(container);
     }
   });
 }
