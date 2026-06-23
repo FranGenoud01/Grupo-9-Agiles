@@ -15,4 +15,9 @@ describe("Ahorcado - Iniciar Partida", () => {
     juego.adivinar("A");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
+  it("descuenta una vida cuando la letra es incorrecta", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    expect(juego.vidasRestantes()).toBe(5);
+  });
 });
