@@ -6,6 +6,9 @@ export class Ahorcado {
 
   adivinar(letra: string): void {
     this.letrasAdivinadas.push(letra);
+    if (!this.palabraSecreta.includes(letra)) {
+      this.vidas--;
+    }
   }
 
   palabraEnmascarada(): string {
