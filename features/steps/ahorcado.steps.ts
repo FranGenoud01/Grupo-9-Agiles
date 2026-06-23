@@ -23,4 +23,9 @@ When("el jugador adivina la letra {string}", async ({ page }, letra: string) => 
   const input = page.getByRole("textbox");
   await input.fill(letra);
   await input.press("Enter");
+
+Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
+  // Buscamos un div específico para los mensajes de fin de juego
+  await expect(page.getByTestId("mensaje")).toHaveText(mensaje);
+});
 });
