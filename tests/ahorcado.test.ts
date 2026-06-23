@@ -44,4 +44,10 @@ describe("Ahorcado - Iniciar Partida", () => {
     juego.adivinar("E");
     expect(juego.vidasRestantes()).toBe(5);
   });
+  it("devuelve una advertencia si la letra ya fue intentada", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("A"); // Letra nueva (no hay advertencia)
+    juego.adivinar("A"); // Letra repetida
+    expect(juego.advertencia()).toBe("Ya intentaste con esa letra");
+  });
 });
