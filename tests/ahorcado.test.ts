@@ -20,4 +20,12 @@ describe("Ahorcado - Iniciar Partida", () => {
     juego.adivinar("E");
     expect(juego.vidasRestantes()).toBe(5);
   });
+  it("indica que el juego esta ganado cuando se adivinan todas las letras", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("G");
+    juego.adivinar("A");
+    juego.adivinar("T");
+    juego.adivinar("O");
+    expect(juego.estado()).toBe("GANASTE");
+  });
 });
