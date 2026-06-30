@@ -21,8 +21,18 @@ Then("se ven {int} vidas", async ({ page }, vidas: number) => {
 When("el jugador adivina la letra {string}", async ({ page }, letra: string) => {
   // Playwright busca un input (textbox), tipea la letra y presiona Enter
   const input = page.getByRole("textbox");
-  await input.fill(letra);
-  await input.press("Enter");
+  
+  if (await input.isDisabled()) {
+    // Si está bloqueado, simulamos que el usuario presiona la tecla a nivel general en la página
+    await page.keyboard.press(letra);
+    await page.keyboard.press("Enter");
+  } else {
+    // Si está habilitado (juego normal), escribimos adentro de la caja de texto
+    await input.fill(letra);
+    await input.press("Enter");
+  }
+  //await input.fill(letra);
+  //await input.press("Enter");
 });
 
 Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
