@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
+    "build": "tsc && vite build",
     "test": "vitest",
     "at": "bddgen && playwright test"
   },
