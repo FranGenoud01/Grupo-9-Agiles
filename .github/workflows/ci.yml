@@ -1,0 +1,60 @@
+name: Pipeline CI/CD Ahorcado
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+# Agregamos permisos para que el bot pueda publicar la página
+permissions:
+  contents: write
+
+jobs:
+  pipeline-completo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Instalar dependencias
+      run: npm install
+
+    # ETAPA 1: BUILD
+    - name: 1. Build
+      run: npm run build
+
+    # ETAPA 2: UNIT TESTS
+    - name: 2. Unit Tests
+      run: npx vitest run
+
+    # ETAPA 3: COVERAGE
+    - name: 3. Coverage
+      run: npx vitest run --coverage
+
+    # (ETAPA 4 COMENTADA TEMPORALMENTE HASTA QUE FRANCO PONGA EL TOKEN)
+    # - name: 4. Análisis Estático y Quality Gate
+    #   uses: SonarSource/sonarcloud-github-action@master
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    - name: Instalar navegadores para Playwright
+      run: npx playwright install --with-deps
+
+    # ETAPA 5: ACCEPTANCE TESTS
+    - name: 5. Acceptance Tests (Playwright)
+      run: npm run at
+
+    # ETAPA 6: DEPLOY (GitHub Pages)
+    - name: 6. Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist

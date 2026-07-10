@@ -1,1 +1,2 @@
-# Grupo-9-giles
+# Grupo-9-Agiles
+[![Pipeline CI/CD Ahorcado](https://github.com/FranGenoud01/Grupo-9-Agiles/actions/workflows/ci.yml/badge.svg)](https://github.com/FranGenoud01/Grupo-9-Agiles/actions/workflows/ci.yml)
