@@ -94,4 +94,10 @@ describe("SelectorDePalabra", () => {
     expect(elegirPalabra(palabras, 0)).toBe("PERRO");
     expect(elegirPalabra(palabras, 1)).toBe("CASA");
   });
+
+  it("si el seed excede el largo de la lista, da la vuelta (módulo)", () => {
+    const palabras = ["PERRO", "CASA", "LUNA"];
+    expect(elegirPalabra(palabras, 3)).toBe("PERRO");
+    expect(elegirPalabra(palabras, 4)).toBe("CASA");
+  });
 });
