@@ -54,3 +54,7 @@ export class Ahorcado {
       .join(" ");
   }
 }
+
+export function elegirPalabra(palabras: string[], seed: number): string {
+  return palabras[seed];
+}
