@@ -56,5 +56,5 @@ export class Ahorcado {
 }
 
 export function elegirPalabra(palabras: string[], seed: number): string {
-  return palabras[seed]!;
+  return palabras[seed % palabras.length]!;
 }
