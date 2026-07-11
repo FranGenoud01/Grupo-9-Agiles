@@ -1,4 +1,4 @@
-import { Ahorcado } from "../domain/Ahorcado";
+import { Ahorcado, etapaDibujo } from "../domain/Ahorcado";
 
 // Para poder re-renderizar, instanciamos el juego fuera o lo pasamos como estado.
 // Vamos a hacer una pequeña refactorización funcional:
@@ -14,6 +14,7 @@ export function mountApp(container: HTMLElement, palabra: string, dificultad: st
 
 function render(container: HTMLElement) {
   container.innerHTML = `
+    <div data-testid="dibujo">${etapaDibujo(juego.vidasIniciales() - juego.vidasRestantes(), juego.vidasIniciales())}</div>
     <div>
       Palabra: <span data-testid="word">${juego.palabraEnmascarada()}</span>
     </div>
