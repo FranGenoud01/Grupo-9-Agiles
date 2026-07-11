@@ -124,3 +124,20 @@ describe("Ahorcado - Jugar de nuevo", () => {
     expect(juego.estado()).toBe("JUGANDO");
   });
 });
+
+describe("Ahorcado - Niveles de dificultad", () => {
+  it("inicia con 8 vidas en dificultad facil", () => {
+    const juego = new Ahorcado("GATO", "facil");
+    expect(juego.vidasRestantes()).toBe(8);
+  });
+
+  it("inicia con 6 vidas en dificultad normal", () => {
+    const juego = new Ahorcado("GATO", "normal");
+    expect(juego.vidasRestantes()).toBe(6);
+  });
+
+  it("inicia con 4 vidas en dificultad dificil", () => {
+    const juego = new Ahorcado("GATO", "dificil");
+    expect(juego.vidasRestantes()).toBe(4);
+  });
+});
