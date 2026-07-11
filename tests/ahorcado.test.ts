@@ -153,4 +153,17 @@ describe("etapaDibujo", () => {
     expect(etapaDibujo(3, 6)).toBe(3);
     expect(etapaDibujo(6, 6)).toBe(6);
   });
+
+  it("en dificultad dificil (4 vidas), los errores avanzan etapas con salto por redondeo", () => {
+    expect(etapaDibujo(1, 4)).toBe(2);
+    expect(etapaDibujo(2, 4)).toBe(3);
+    expect(etapaDibujo(3, 4)).toBe(5);
+    expect(etapaDibujo(4, 4)).toBe(6);
+  });
+
+  it("en dificultad facil (8 vidas), algunos errores no avanzan etapa", () => {
+    expect(etapaDibujo(3, 8)).toBe(3);
+    expect(etapaDibujo(4, 8)).toBe(3);
+    expect(etapaDibujo(8, 8)).toBe(6);
+  });
 });
