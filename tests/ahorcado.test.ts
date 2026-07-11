@@ -63,3 +63,26 @@ describe("Ahorcado - Iniciar Partida", () => {
     expect(juego.vidasRestantes()).toBe(0);
   });
 });
+
+describe("Ahorcado - Soporte de acentos", () => {
+  it("revela una letra acentuada al ingresar la letra sin acento", () => {
+    const juego = new Ahorcado("MURCIÉLAGO");
+    juego.adivinar("E");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _ _ E _ _ _ _");
+  });
+
+  it("no descuenta vida al acertar una letra acentuada sin acento", () => {
+    const juego = new Ahorcado("MURCIÉLAGO");
+    juego.adivinar("E");
+    expect(juego.vidasRestantes()).toBe(6);
+  });
+
+  it("permite ganar adivinando letras acentuadas sin acento", () => {
+    const juego = new Ahorcado("CAFÉ");
+    juego.adivinar("C");
+    juego.adivinar("A");
+    juego.adivinar("F");
+    juego.adivinar("E");
+    expect(juego.estado()).toBe("GANASTE");
+  });
+});
