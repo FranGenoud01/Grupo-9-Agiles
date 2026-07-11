@@ -25,3 +25,22 @@
 
 ### AT 7 — Entrada inválida
 - genera una advertencia y no penaliza si se ingresa un caracter no valido
+
+### AT 8 — Soporte de acentos
+- revela una letra acentuada al ingresar la letra sin acento
+- no descuenta vida al acertar una letra acentuada sin acento
+- permite ganar adivinando letras acentuadas sin acento
+
+### AT 9 — Palabra al azar
+- elige la palabra en la posición correspondiente al seed
+- si el seed excede el largo de la lista, da la vuelta (módulo)
+
+### AT 10 — Jugar de nuevo
+- reinicia las vidas al volver a jugar
+- vuelve a ocultar la palabra al reiniciar
+- el estado vuelve a JUGANDO al reiniciar
+
+### AT 11 — Niveles de dificultad
+- inicia con 8 vidas en dificultad facil
+- inicia con 6 vidas en dificultad normal
+- inicia con 4 vidas en dificultad dificil
