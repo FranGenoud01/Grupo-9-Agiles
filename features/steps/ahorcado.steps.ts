@@ -50,3 +50,7 @@ When("el jugador hace click en {string}", async ({ page }, texto: string) => {
 Given("una partida con la palabra {string} en dificultad {string}", async ({ page }, palabra: string, dificultad: string) => {
   await page.goto(`/?word=${palabra}&dificultad=${dificultad}`);
 });
+
+Then("se ve el dibujo en la etapa {int}", async ({ page }, etapa: number) => {
+  await expect(page.getByTestId("dibujo")).toHaveText(String(etapa));
+});
