@@ -46,3 +46,7 @@ Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
 When("el jugador hace click en {string}", async ({ page }, texto: string) => {
   await page.getByRole("button", { name: texto }).click();
 });
+
+Given("una partida con la palabra {string} en dificultad {string}", async ({ page }, palabra: string, dificultad: string) => {
+  await page.goto(`/?word=${palabra}&dificultad=${dificultad}`);
+});
