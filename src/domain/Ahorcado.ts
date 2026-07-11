@@ -1,5 +1,6 @@
 export class Ahorcado {
   private vidas: number;
+  private vidasIniciales_: number;
   private letrasAdivinadas: string[] = [];
   private mensajeAdvertencia: string = ""; // 1. Nueva propiedad para guardar el aviso
   private normalizar(letra: string): string {
@@ -14,6 +15,7 @@ export class Ahorcado {
   } else {
     this.vidas = 6;
   }
+  this.vidasIniciales_ = this.vidas;
 }
 
   adivinar(letra: string): void {
@@ -60,6 +62,10 @@ export class Ahorcado {
       .split("")
       .map(letra => this.letrasAdivinadas.includes(this.normalizar(letra)) ? this.normalizar(letra) : "_")
       .join(" ");
+  }
+
+  vidasIniciales(): number {
+    return this.vidasIniciales_;
   }
 
   reiniciar(): void {
