@@ -78,3 +78,7 @@ export class Ahorcado {
 export function elegirPalabra(palabras: string[], seed: number): string {
   return palabras[seed % palabras.length]!;
 }
+
+export function etapaDibujo(errores: number, vidasIniciales: number): number {
+  return Math.ceil((errores / vidasIniciales) * 6);
+}
