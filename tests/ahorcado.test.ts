@@ -101,3 +101,26 @@ describe("SelectorDePalabra", () => {
     expect(elegirPalabra(palabras, 4)).toBe("CASA");
   });
 });
+
+describe("Ahorcado - Jugar de nuevo", () => {
+  it("reinicia las vidas al volver a jugar", () => {
+    const juego = new Ahorcado("GATO");
+    ["Z", "X", "C", "V", "B", "N"].forEach(letra => juego.adivinar(letra));
+    juego.reiniciar();
+    expect(juego.vidasRestantes()).toBe(6);
+  });
+
+  it("vuelve a ocultar la palabra al reiniciar", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("G");
+    juego.reiniciar();
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
+  });
+
+  it("el estado vuelve a JUGANDO al reiniciar", () => {
+    const juego = new Ahorcado("GATO");
+    ["Z", "X", "C", "V", "B", "N"].forEach(letra => juego.adivinar(letra));
+    juego.reiniciar();
+    expect(juego.estado()).toBe("JUGANDO");
+  });
+});
