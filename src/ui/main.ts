@@ -24,6 +24,7 @@ function render(container: HTMLElement) {
     </div>
     <div style="margin-top: 10px;">
       <input type="text" id="letra-input" maxlength="1" autofocus placeholder="Ingresá una letra">
+      ${juego.estado() !== "JUGANDO" ? `<button id="btn-reiniciar" style="margin-top: 10px;">Jugar de nuevo</button>` : ""}
     </div>
     <div style="margin-top: 20px; font-weight: bold; color: ${juego.estado() === 'GANASTE' ? 'green' : juego.estado() === 'PERDISTE' ? 'red' : 'orange'};" data-testid="mensaje">
       ${juego.estado() !== "JUGANDO" ? juego.estado() : juego.advertencia()}
@@ -43,4 +44,12 @@ function render(container: HTMLElement) {
       render(container);
     }
   });
+
+  const btnReiniciar = document.getElementById("btn-reiniciar");
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener("click", () => {
+      juego.reiniciar();
+      render(container);
+    });
+  }
 }

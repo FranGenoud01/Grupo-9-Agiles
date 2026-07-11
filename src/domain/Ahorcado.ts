@@ -53,6 +53,12 @@ export class Ahorcado {
       .map(letra => this.letrasAdivinadas.includes(this.normalizar(letra)) ? this.normalizar(letra) : "_")
       .join(" ");
   }
+
+  reiniciar(): void {
+    this.vidas = 6;
+    this.letrasAdivinadas = [];
+    this.mensajeAdvertencia = "";
+  }
 }
 
 export function elegirPalabra(palabras: string[], seed: number): string {
