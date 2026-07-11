@@ -44,3 +44,8 @@
 - inicia con 8 vidas en dificultad facil
 - inicia con 6 vidas en dificultad normal
 - inicia con 4 vidas en dificultad dificil
+
+### AT 12 — Dibujo progresivo del ahorcado
+- en dificultad normal (6 vidas), cada error avanza una etapa exacta
+- en dificultad dificil (4 vidas), los errores avanzan etapas con salto por redondeo
+- en dificultad facil (8 vidas), algunos errores no avanzan etapa
