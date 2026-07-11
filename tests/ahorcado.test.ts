@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Ahorcado } from "../src/domain/Ahorcado";
+import { Ahorcado, elegirPalabra  } from "../src/domain/Ahorcado";
 
 describe("Ahorcado - Iniciar Partida", () => {
   it("oculta todas las letras de la palabra al iniciar", () => {
@@ -84,5 +84,14 @@ describe("Ahorcado - Soporte de acentos", () => {
     juego.adivinar("F");
     juego.adivinar("E");
     expect(juego.estado()).toBe("GANASTE");
+  });
+
+});
+
+describe("SelectorDePalabra", () => {
+  it("elige la palabra en la posición correspondiente al seed", () => {
+    const palabras = ["PERRO", "CASA", "LUNA"];
+    expect(elegirPalabra(palabras, 0)).toBe("PERRO");
+    expect(elegirPalabra(palabras, 1)).toBe("CASA");
   });
 });
