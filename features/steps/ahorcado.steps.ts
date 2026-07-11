@@ -8,6 +8,11 @@ Given("una partida con la palabra {string}", async ({ page }, palabra: string) =
   await page.goto(`/?word=${palabra}`);
 });
 
+Given("una partida al azar con el seed {string}", async ({ page }, seed: string) => {
+  // Seam para el azar: fija qué posición de la lista se elige, sin depender de Math.random
+  await page.goto(`/?seed=${seed}`);
+});
+
 Then("se ve la palabra {string}", async ({ page }, esperada: string) => {
   // Busca en la pantalla un elemento con data-testid="word" y verifica su texto
   await expect(page.getByTestId("word")).toHaveText(esperada);
