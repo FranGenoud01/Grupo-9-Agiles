@@ -140,4 +140,9 @@ describe("Ahorcado - Niveles de dificultad", () => {
     const juego = new Ahorcado("GATO", "dificil");
     expect(juego.vidasRestantes()).toBe(4);
   });
+
+  it("expone la cantidad de vidas iniciales de la dificultad elegida", () => {
+    const juego = new Ahorcado("GATO", "dificil");
+    expect(juego.vidasIniciales()).toBe(4);
+  });
 });
