@@ -5,12 +5,10 @@ import { Ahorcado } from "../domain/Ahorcado";
 
 let juego: Ahorcado;
 
-export function mountApp(container: HTMLElement, palabra: string) {
-  // Inicializamos el juego solo la primera vez
+export function mountApp(container: HTMLElement, palabra: string, dificultad: string = "normal") {
   if (!juego) {
-    juego = new Ahorcado(palabra);
+    juego = new Ahorcado(palabra, dificultad);
   }
-
   render(container);
 }
 

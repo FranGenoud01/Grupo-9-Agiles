@@ -1,12 +1,20 @@
 export class Ahorcado {
-  private vidas: number = 6;
+  private vidas: number;
   private letrasAdivinadas: string[] = [];
   private mensajeAdvertencia: string = ""; // 1. Nueva propiedad para guardar el aviso
   private normalizar(letra: string): string {
   return letra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
 }
 
-  constructor(private palabraSecreta: string) {}
+  constructor(private palabraSecreta: string, dificultad: string = "normal") {
+  if (dificultad === "facil") {
+    this.vidas = 8;
+  } else if (dificultad === "dificil") {
+    this.vidas = 4;
+  } else {
+    this.vidas = 6;
+  }
+}
 
   adivinar(letra: string): void {
     const letraNorm = this.normalizar(letra);
