@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Ahorcado, elegirPalabra  } from "../src/domain/Ahorcado";
+import { Ahorcado, elegirPalabra, etapaDibujo } from "../src/domain/Ahorcado";
 
 describe("Ahorcado - Iniciar Partida", () => {
   it("oculta todas las letras de la palabra al iniciar", () => {
@@ -144,5 +144,13 @@ describe("Ahorcado - Niveles de dificultad", () => {
   it("expone la cantidad de vidas iniciales de la dificultad elegida", () => {
     const juego = new Ahorcado("GATO", "dificil");
     expect(juego.vidasIniciales()).toBe(4);
+  });
+});
+
+describe("etapaDibujo", () => {
+  it("en dificultad normal (6 vidas), cada error avanza una etapa exacta", () => {
+    expect(etapaDibujo(1, 6)).toBe(1);
+    expect(etapaDibujo(3, 6)).toBe(3);
+    expect(etapaDibujo(6, 6)).toBe(6);
   });
 });
