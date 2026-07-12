@@ -38,12 +38,12 @@ jobs:
     - name: 3. Coverage
       run: npx vitest run --coverage
 
-    # (ETAPA 4 COMENTADA TEMPORALMENTE HASTA QUE PONGA EL TOKEN)
-    # - name: 4. Análisis Estático y Quality Gate
-    #   uses: SonarSource/sonarcloud-github-action@master
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    # ETAPA 4: ANÁLISIS ESTÁTICO Y QUALITY GATE
+    - name: 4. Análisis Estático y Quality Gate
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Instalar navegadores para Playwright
       run: npx playwright install --with-deps
