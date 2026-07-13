@@ -13,7 +13,7 @@
       ${e>=5?`<line x1="90" y1="120" x2="72" y2="150" stroke="#d9534f" stroke-width="4" stroke-linecap="round"/>`:``}
       ${e>=6?`<line x1="90" y1="120" x2="108" y2="150" stroke="#d9534f" stroke-width="4" stroke-linecap="round"/>`:``}
     </svg>
-  `}function o(e){let t=n(r.vidasIniciales()-r.vidasRestantes(),r.vidasIniciales());e.innerHTML=`
+  `}function o(e){let t=n(r.vidasIniciales()-r.vidasRestantes(),r.vidasIniciales()),i=r.estado(),s;s=i===`GANASTE`?`green`:i===`PERDISTE`?`red`:`orange`,e.innerHTML=`
     <div data-testid="dibujo" style="display:none">${t}</div>
     ${a(t)}
     <div>
@@ -24,9 +24,9 @@
     </div>
     <div style="margin-top: 10px;">
       <input type="text" id="letra-input" maxlength="1" autofocus placeholder="Ingresá una letra">
-      ${r.estado()===`JUGANDO`?``:`<button id="btn-reiniciar" style="margin-top: 10px;">Jugar de nuevo</button>`}
+      ${i===`JUGANDO`?``:`<button id="btn-reiniciar" style="margin-top: 10px;">Jugar de nuevo</button>`}
     </div>
-    <div style="margin-top: 20px; font-weight: bold; color: ${r.estado()===`GANASTE`?`green`:r.estado()===`PERDISTE`?`red`:`orange`};" data-testid="mensaje">
-      ${r.estado()===`JUGANDO`?r.advertencia():r.estado()}
+    <div style="margin-top: 20px; font-weight: bold; color: ${s};" data-testid="mensaje">
+      ${i===`JUGANDO`?r.advertencia():i}
     </div>
-  `;let i=document.getElementById(`letra-input`);r.estado()!==`JUGANDO`&&(i.disabled=!0),i.addEventListener(`keypress`,t=>{t.key===`Enter`&&i.value&&(r.adivinar(i.value.toUpperCase()),o(e))});let s=document.getElementById(`btn-reiniciar`);s&&s.addEventListener(`click`,()=>{r.reiniciar(),o(e)})}var s=[`PERRO`,`CASA`,`LUNA`,`SOL`,`AGUA`,`MURCIÉLAGO`,`NIÑO`,`RÍO`,`CORAZÓN`,`MÚSICA`,`ÁRBOL`],c=new URLSearchParams(window.location.search),l=c.get(`word`),u=c.get(`seed`),d=c.get(`dificultad`)||`normal`,f=l||(u===null?`GATO`:t(s,Number(u)));i(document.getElementById(`app`),f,d);
+  `;let c=document.getElementById(`letra-input`);r.estado()!==`JUGANDO`&&(c.disabled=!0),c.addEventListener(`keypress`,t=>{t.key===`Enter`&&c.value&&(r.adivinar(c.value.toUpperCase()),o(e))});let l=document.getElementById(`btn-reiniciar`);l&&l.addEventListener(`click`,()=>{r.reiniciar(),o(e)})}var s=[`PERRO`,`CASA`,`LUNA`,`SOL`,`AGUA`,`MURCIÉLAGO`,`NIÑO`,`RÍO`,`CORAZÓN`,`MÚSICA`,`ÁRBOL`],c=new URLSearchParams(window.location.search),l=c.get(`word`),u=c.get(`seed`),d=c.get(`dificultad`)||`normal`,f=l||(u===null?`GATO`:t(s,Number(u)));i(document.getElementById(`app`),f,d);
