@@ -34,7 +34,16 @@ function dibujarAhorcado(etapa: number): string {
 function render(container: HTMLElement) {
   const errores = juego.vidasIniciales() - juego.vidasRestantes();
   const etapa = etapaDibujo(errores, juego.vidasIniciales());
+  const estado = juego.estado();
 
+  let colorMensaje: string;
+  if (estado === 'GANASTE') {
+    colorMensaje = 'green';
+  } else if (estado === 'PERDISTE') {
+    colorMensaje = 'red';
+  } else {
+    colorMensaje = 'orange';
+  }
   container.innerHTML = `
     <div data-testid="dibujo" style="display:none">${etapa}</div>
     ${dibujarAhorcado(etapa)}
@@ -46,10 +55,10 @@ function render(container: HTMLElement) {
     </div>
     <div style="margin-top: 10px;">
       <input type="text" id="letra-input" maxlength="1" autofocus placeholder="Ingresá una letra">
-      ${juego.estado() !== "JUGANDO" ? `<button id="btn-reiniciar" style="margin-top: 10px;">Jugar de nuevo</button>` : ""}
+      ${estado !== "JUGANDO" ? `<button id="btn-reiniciar" style="margin-top: 10px;">Jugar de nuevo</button>` : ""}
     </div>
-    <div style="margin-top: 20px; font-weight: bold; color: ${juego.estado() === 'GANASTE' ? 'green' : juego.estado() === 'PERDISTE' ? 'red' : 'orange'};" data-testid="mensaje">
-      ${juego.estado() !== "JUGANDO" ? juego.estado() : juego.advertencia()}
+    <div style="margin-top: 20px; font-weight: bold; color: ${colorMensaje};" data-testid="mensaje">
+      ${estado !== "JUGANDO" ? estado : juego.advertencia()}
     </div>
   `;
 

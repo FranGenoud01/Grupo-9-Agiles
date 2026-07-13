@@ -19,5 +19,8 @@
     "@vitest/coverage-v8": "^4.1.10",
     "playwright-bdd": "^9.2.0",
     "vitest": "^4.1.9"
+  },
+  "dependencies": {
+    "vite": "^8.1.4"
   }
 }
