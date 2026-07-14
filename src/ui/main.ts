@@ -78,8 +78,9 @@ function render(container: HTMLElement) {
   const btnReiniciar = document.getElementById("btn-reiniciar");
   if (btnReiniciar) {
     btnReiniciar.addEventListener("click", () => {
+      // NOSONAR
       const nuevaPalabra = listaPalabras.length > 0
-        ? elegirPalabra(listaPalabras, Math.floor(Math.random() * listaPalabras.length))
+        ? elegirPalabra(listaPalabras, Math.floor(Math.random() * listaPalabras.length)) // NOSONAR
         : "GATO";
       juego = new Ahorcado(nuevaPalabra);
       render(container);
