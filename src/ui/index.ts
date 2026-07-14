@@ -19,4 +19,4 @@ if (wordParam) {
 }
 
 const appContainer = document.getElementById("app")!;
-mountApp(appContainer, palabra, dificultad);
+mountApp(appContainer, palabra, dificultad, PALABRAS);

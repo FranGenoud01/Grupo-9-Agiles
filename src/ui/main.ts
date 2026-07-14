@@ -1,11 +1,10 @@
-import { Ahorcado, etapaDibujo } from "../domain/Ahorcado";
-
-// Para poder re-renderizar, instanciamos el juego fuera o lo pasamos como estado.
-// Vamos a hacer una pequeña refactorización funcional:
+import { Ahorcado, etapaDibujo, elegirPalabra } from "../domain/Ahorcado";
 
 let juego: Ahorcado;
+let listaPalabras: string[];
 
-export function mountApp(container: HTMLElement, palabra: string, dificultad: string = "normal") {
+export function mountApp(container: HTMLElement, palabra: string, dificultad: string = "normal", palabras: string[] = []) {
+  listaPalabras = palabras;
   if (!juego) {
     juego = new Ahorcado(palabra, dificultad);
   }
@@ -79,8 +78,11 @@ function render(container: HTMLElement) {
   const btnReiniciar = document.getElementById("btn-reiniciar");
   if (btnReiniciar) {
     btnReiniciar.addEventListener("click", () => {
-      juego.reiniciar();
+      const nuevaPalabra = listaPalabras.length > 0
+        ? elegirPalabra(listaPalabras, Math.floor(Math.random() * listaPalabras.length))
+        : "GATO";
+      juego = new Ahorcado(nuevaPalabra);
       render(container);
-    });
+      });
   }
 }
