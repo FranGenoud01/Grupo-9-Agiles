@@ -10,5 +10,5 @@ Característica: Jugar de nuevo
     Y el jugador adivina la letra "B"
     Y el jugador adivina la letra "N"
     Y el jugador hace click en "Jugar de nuevo"
-    Entonces se ve la palabra "_ _ _ _"
+    Entonces se ve una partida nueva
     Y se ven 6 vidas

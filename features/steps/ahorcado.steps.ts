@@ -54,3 +54,8 @@ Given("una partida con la palabra {string} en dificultad {string}", async ({ pag
 Then("se ve el dibujo en la etapa {int}", async ({ page }, etapa: number) => {
   await expect(page.getByTestId("dibujo")).toHaveText(String(etapa));
 });
+
+Then("se ve una partida nueva", async ({ page }) => {
+  const texto = await page.getByTestId("word").textContent();
+  expect(texto).toMatch(/^_( _)*$/);
+});
